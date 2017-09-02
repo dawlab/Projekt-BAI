@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--
   Generated template for the EdytujBadaniePage page.
 
@@ -8,11 +9,93 @@
 
   <ion-navbar>
     <ion-title>edytuj-badanie</ion-title>
+=======
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Dodaj badanie</ion-title>
+>>>>>>> Dodanie elementow models i service, dodanie informacji o normach badan
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+<<<<<<< HEAD
 
+=======
+  <form [formGroup]="badanieForm" (ngSubmit)="onSubmit()">
+      <ion-list>
+          <ion-item>
+              <ion-label floating>Nazwa badania</ion-label>
+              <ion-input type="text" formControlName="name"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>Erytrocyty</ion-label>
+            <ion-input type="number" formControlName="erytrocyty"></ion-input>           
+          </ion-item>
+          <ion-item>Norma: ♂ 4,5–6,5 M/µl ♀ 3,9–5,6 M/µl</ion-item> 
+          
+
+          <ion-item>
+            <ion-label floating>Hemoglobina</ion-label>
+            <ion-input type="number" formControlName="hemoglobina"></ion-input>
+          </ion-item>
+          <ion-item>Norma: ♂ 7,4–10,5 mmol/l ♀ 6,8–9,3 mmol/l</ion-item>
+            
+
+          <ion-item>
+            <ion-label floating>Hematokryt</ion-label>
+            <ion-input type="number" formControlName="hematokryt"></ion-input>
+          </ion-item>
+          <ion-item>Norma: ♂ 0,4-0,5 ♀ 0,37-0,47</ion-item>
+
+          <ion-item>
+            <ion-label floating>MCV</ion-label>
+            <ion-input type="number" formControlName="mcv"></ion-input>
+          </ion-item>
+          <ion-item>Norma: ♂ ♀ 80-97</ion-item>
+
+          <ion-item>
+            <ion-label floating>MCH</ion-label>
+            <ion-input type="number" formControlName="mch"></ion-input>
+          </ion-item>
+          <ion-item>Norma: ♂ ♀ 26-32 pg</ion-item>
+
+          <ion-item>
+            <ion-label floating>MCHC</ion-label>
+            <ion-input type="number" formControlName="mchc"></ion-input>
+          </ion-item>
+          <ion-item>Norma: ♂ ♀ 31-36 g/dl</ion-item>
+
+          <ion-item>
+            <ion-label floating>Leukocyty</ion-label>
+            <ion-input type="number" formControlName="leukocyty"></ion-input>
+          </ion-item>
+          <ion-item>Norma: ♂ ♀ 4,1-10,9 K/µl</ion-item>
+
+          <ion-item>
+            <ion-label floating>Limfocyty</ion-label>
+            <ion-input type="number" formControlName="limfocyty"></ion-input>
+          </ion-item>
+          <ion-item>Norma: ♂ ♀ 0,6-4,1 K/µl</ion-item>
+
+          <ion-item>
+            <ion-label floating>Monocyty</ion-label>
+            <ion-input type="number" formControlName="monocyty"></ion-input>
+          </ion-item>
+          <ion-item>Norma: ♂ ♀ 0,1-0,4 G/l</ion-item>
+
+          <ion-item>
+            <ion-label floating>Trombocyty</ion-label>
+            <ion-input type="number" formControlName="trombocyty"></ion-input>
+          </ion-item>
+          <ion-item>Norma: ♂ ♀ 140-440 K/µl</ion-item>
+
+      </ion-list>
+      <button type="submit" ion-button block [disabled]="!badanieForm.valid">Dodaj badanie</button>      
+  </form>
+>>>>>>> Dodanie elementow models i service, dodanie informacji o normach badan
 </ion-content>
