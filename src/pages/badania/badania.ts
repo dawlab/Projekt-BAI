@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EdytujBadaniePage } from "../edytuj-badanie/edytuj-badanie";
+import { Badanie } from "../../models/badanie";
+import { BadaniaService } from "../../services/badania";
+import { BadaniePage } from "../badanie/badanie";
 
-/**
- * Generated class for the BadaniaPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,11 +13,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class BadaniaPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  badania: Badanie[];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private badaniaService: BadaniaService) {}
+
+  ionViewWillEnter() {
+    this.badania = this.badaniaService.getBadania();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BadaniaPage');
+  onNoweBadanie() {
+    this.navCtrl.push(EdytujBadaniePage, {
+    mode: 'New'});
   }
 
+  onLoadBadanie(badanie: Badanie, index: number) {
+  this.navCtrl.push(BadaniePage, {badanie: badanie, index: index});
+  }
 }

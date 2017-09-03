@@ -1,25 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Badanie } from "../../models/badanie";
 
-/**
- * Generated class for the BadaniePage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
   selector: 'page-badanie',
   templateUrl: 'badanie.html',
 })
-export class BadaniePage {
+export class BadaniePage implements OnInit {
+  badanie: Badanie;
+  index: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+
+  ngOnInit() {
+    this.badanie = this.navParams.get('badanie');
+    this.index = this.navParams.get('index');
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BadaniePage');
-  }
-
+  
 }

@@ -1,18 +1,45 @@
-<!--
-  Generated template for the BadaniePage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>badanie</ion-title>
+    <ion-title>{{ badanie.name }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h2>{{ badanie.name }}</h2>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <p>Erytrocyty: {{ badanie.erytrocyty }}</p>
+        <p>Hemoglobina: {{ badanie.hemoglobina }}</p>
+        <p>Hematokryt: {{ badanie.hematokryt }}</p>
+        <p>MCV: {{ badanie.mcv }}</p>
+        <p>MCH: {{ badanie.mch}}</p>
+        <p>MCHC {{ badanie.mchc}}</p>
+        <p>Leukocyty: {{ badanie.leukocyty}}</p>
+        <p>Limfocyty: {{ badanie.limfocyty}}</p>
+        <p>Monocyty: {{ badanie.limfocyty}}</p>
+        <p>Trombocyty: {{ badanie.limfocyty}}</p>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button outline block (click)="onEditBadanie()">Edytuj</button>
+      </ion-col>
+      <ion-col>
+        <button ion-button outline block color="danger" (click)="onDeleteBadanie()">Usuń</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
