@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Badanie } from "../../models/badanie";
-import { EdytujBadaniePage } from "../edytuj-badanie/edytuj-badanie";
-import { BadaniaService } from "../../services/badania";
 
 @Component({
   selector: 'page-badanie',
@@ -12,20 +10,11 @@ export class BadaniePage implements OnInit {
   badanie: Badanie;
   index: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private badaniaService: BadaniaService) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ngOnInit() {
     this.badanie = this.navParams.get('badanie');
     this.index = this.navParams.get('index');
-  }
-
-  onEditBadanie() {
-    this.navCtrl.push(EdytujBadaniePage, {mode: 'Edytuj', badanie: this.badanie, index: this.index});
-  }
-
-  onDeleteBadanie() {
-    this.badaniaService.usunBadanie(this.index);
-    this.navCtrl.popToRoot();
   }
   
 }
