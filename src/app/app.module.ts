@@ -14,8 +14,6 @@ import { EdytujBadaniePage } from '../pages/edytuj-badanie/edytuj-badanie';
 import { LokalizujPage } from '../pages/lokalizuj/lokalizuj';
 import { TabsPage } from '../pages/tabs/tabs';
 
-
-
 @NgModule({
   declarations: [
     MyApp,
@@ -43,9 +41,7 @@ import { TabsPage } from '../pages/tabs/tabs';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
     BadaniaService
-
   ]
 })
 export class AppModule {}

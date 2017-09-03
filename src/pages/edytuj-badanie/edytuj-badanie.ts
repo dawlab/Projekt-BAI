@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { BadaniaService } from "../../services/badania";
 
-
 @Component({
   selector: 'page-edytuj-badanie',
   templateUrl: 'edytuj-badanie.html',
