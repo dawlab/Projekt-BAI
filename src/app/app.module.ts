@@ -13,6 +13,8 @@ import { BadaniePage } from '../pages/badanie/badanie';
 import { EdytujBadaniePage } from '../pages/edytuj-badanie/edytuj-badanie';
 import { LokalizujPage } from '../pages/lokalizuj/lokalizuj';
 import { TabsPage } from '../pages/tabs/tabs';
+import { SigninPage } from "../pages/signin/signin";
+import { SignupPage } from "../pages/signup/signup";
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { TabsPage } from '../pages/tabs/tabs';
     BadaniePage,
     EdytujBadaniePage,
     LokalizujPage,
-    TabsPage
+    TabsPage,
+    SigninPage,
+    SignupPage
     
   ],
   imports: [
