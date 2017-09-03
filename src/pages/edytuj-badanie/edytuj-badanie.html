@@ -2,7 +2,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Dodaj badanie</ion-title>
+    <ion-title>{{ mode }} badanie</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -78,6 +78,6 @@
           <ion-item>Norma: ♂ ♀ 140-440 K/µl</ion-item>
 
       </ion-list>
-      <button type="submit" ion-button block [disabled]="!badanieForm.valid">Dodaj badanie</button>      
+      <button type="submit" ion-button block [disabled]="!badanieForm.valid">{{ mode }} badanie</button>      
   </form>
 </ion-content>
