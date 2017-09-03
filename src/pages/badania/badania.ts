@@ -25,7 +25,7 @@ export class BadaniaPage {
 
   onNoweBadanie() {
     this.navCtrl.push(EdytujBadaniePage, {
-      mode: 'New'
+      mode: 'Nowe'
     });
 
  }

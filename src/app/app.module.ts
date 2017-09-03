@@ -15,6 +15,7 @@ import { LokalizujPage } from '../pages/lokalizuj/lokalizuj';
 import { TabsPage } from '../pages/tabs/tabs';
 import { SigninPage } from "../pages/signin/signin";
 import { SignupPage } from "../pages/signup/signup";
+import { AuthService } from "../services/auth";
 
 @NgModule({
   declarations: [
@@ -39,13 +40,17 @@ import { SignupPage } from "../pages/signup/signup";
     BadaniePage,
     EdytujBadaniePage,
     LokalizujPage,
-    TabsPage
+    TabsPage,
+    SigninPage,
+    SignupPage
+
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    BadaniaService
+    BadaniaService,
+    AuthService
   ]
 })
 export class AppModule {}
