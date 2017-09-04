@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, PopoverController } from 'ionic-angular';
+import { NavController, PopoverController, LoadingController, AlertController } from 'ionic-angular';
 import { EdytujBadaniePage } from "../edytuj-badanie/edytuj-badanie";
 import { Badanie } from "../../models/badanie";
 import { BadaniaService } from "../../services/badania";
@@ -15,7 +15,7 @@ export class BadaniaPage {
 
   badania: Badanie[];
 
-  constructor(private navCtrl: NavController, private badaniaService: BadaniaService, private popoverCtrl: PopoverController, private authService: AuthService) {}
+  constructor(private navCtrl: NavController, private badaniaService: BadaniaService, private popoverCtrl: PopoverController, private authService: AuthService, private loadingCtrl: LoadingController, private alertCtrl: AlertController) {}
 
   ionViewWillEnter() {
     this.badania = this.badaniaService.getBadania();
@@ -32,17 +32,22 @@ export class BadaniaPage {
   }
 
   onShowOptions(event: MouseEvent) {
+    const loading = this.loadingCtrl.create({
+      content: 'Proszę czekać..'
+    });
     const popover = this.popoverCtrl.create(bOptionsPage);
     popover.present({ev: event});
     popover.onDidDismiss(
       data => {
         if (data.action == 'load') {
+          loading.present();
           this.authService.getActiveUser().getToken()
           .then(
             (token: string) => {
               this.badaniaService.fetchList(token)
                 .subscribe(
                   (list: Badanie[]) => {
+                    loading.dismiss();
                     if (list) {
                       this.badania = list;
                     } else {
@@ -50,20 +55,23 @@ export class BadaniaPage {
                     }
                   },
                   error => {
-                    console.log(error);
+                    loading.dismiss();
+                    this.handleError(error.json().error);
                   }
                 );
             }
           );
-        } else {
+        } else if (data.action == 'store') {
+          loading.present();
           this.authService.getActiveUser().getToken()
             .then(
               (token: string) => {
                 this.badaniaService.storeList(token)
                   .subscribe(
-                    () => console.log('Success!'),
+                    () => loading.dismiss(),
                     error => {
-                      console.log(error);
+                      loading.dismiss();
+                      this.handleError(error.json().error);
                     }
                   );
               }
@@ -73,4 +81,12 @@ export class BadaniaPage {
     );
   }
 
+  private handleError(errorMessage: string) {
+    const alert = this.alertCtrl.create({
+      title: 'Wystąpił błąd',
+      message: errorMessage,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 }
