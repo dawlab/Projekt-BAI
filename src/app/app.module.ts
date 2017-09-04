@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { BadaniaService } from "../services/badania";
+import { HttpModule } from '@angular/http';
 
 
 /*Zaimportowanie stron aplikacji*/
@@ -16,6 +17,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { SigninPage } from "../pages/signin/signin";
 import { SignupPage } from "../pages/signup/signup";
 import { AuthService } from "../services/auth";
+import { bOptionsPage } from "../pages/badania/b-options/b-options";
 
 @NgModule({
   declarations: [
@@ -26,12 +28,14 @@ import { AuthService } from "../services/auth";
     LokalizujPage,
     TabsPage,
     SigninPage,
-    SignupPage
+    SignupPage,
+    bOptionsPage
     
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -42,7 +46,8 @@ import { AuthService } from "../services/auth";
     LokalizujPage,
     TabsPage,
     SigninPage,
-    SignupPage
+    SignupPage,
+    bOptionsPage
 
   ],
   providers: [
