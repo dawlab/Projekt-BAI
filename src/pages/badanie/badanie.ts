@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Badanie } from "../../models/badanie";
 import { BadaniaService } from "../../services/badania";
 import { EdytujBadaniePage } from "../edytuj-badanie/edytuj-badanie";
