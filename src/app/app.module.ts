@@ -18,6 +18,8 @@ import { SigninPage } from "../pages/signin/signin";
 import { SignupPage } from "../pages/signup/signup";
 import { AuthService } from "../services/auth";
 import { bOptionsPage } from "../pages/badania/b-options/b-options";
+import { AgmCoreModule } from "@agm/core";
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,10 @@ import { bOptionsPage } from "../pages/badania/b-options/b-options";
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyA8kCkUHBD2KjqkWpCsDyaIvkqKvbJ0EPw'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -55,7 +60,8 @@ import { bOptionsPage } from "../pages/badania/b-options/b-options";
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BadaniaService,
-    AuthService
+    AuthService,
+    Geolocation
   ]
 })
 export class AppModule {}
