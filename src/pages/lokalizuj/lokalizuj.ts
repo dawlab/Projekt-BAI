@@ -1,25 +1,48 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Location } from "../../models/location";
+import { ToastController, LoadingController } from "ionic-angular";
+import { Geolocation } from '@ionic-native/geolocation';
 
-/**
- * Generated class for the LokalizujPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 
-@IonicPage()
 @Component({
   selector: 'page-lokalizuj',
   templateUrl: 'lokalizuj.html',
 })
 export class LokalizujPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  location: Location = {
+    lat: 40.7624324,
+    lng: -73.9759827
+  };
+  locationIsSet = false;
+
+  constructor(private loadingCtrl: LoadingController, private toastCtrl: ToastController, private geolocation: Geolocation) {}
+
+  onLocate() {
+    const loader = this.loadingCtrl.create({
+      content: 'Getting your Location...'
+    });
+    loader.present();
+    this.geolocation.getCurrentPosition()
+      .then(
+        location => {
+          loader.dismiss();
+          this.location.lat = location.coords.latitude;
+          this.location.lng = location.coords.longitude;
+          this.locationIsSet = true;
+        }
+      )
+      .catch(
+        error => {
+          loader.dismiss();
+          const toast = this.toastCtrl.create({
+            message: 'Could get location, please pick it manually!',
+            duration: 2500
+          });
+          toast.present();
+        }
+      );
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LokalizujPage');
-  }
 
 }
